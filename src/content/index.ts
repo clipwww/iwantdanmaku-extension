@@ -22,18 +22,26 @@ function initDanmaku() {
   const origin = window.location.origin;
 
   switch(true) {
+    case origin.includes('agefans'):
+      $video = document.querySelector('iframe')?.contentDocument?.querySelector('video') as HTMLVideoElement;
+      $container = $video.parentElement as HTMLElement;
+      $video.style.position = 'absolute';
+      $video.style.top = '0';
+      $video.style.left = '0';
+      $container.style.position = 'relative'
+      break;
     case origin.includes('youtube'):
       $video = document.querySelector('.html5-main-video') as HTMLVideoElement;
       $container = document.querySelector('.html5-video-container') as HTMLElement;
+      $container.style.height = `${$video.clientHeight}px`;
       break;
   }
-  console.log(origin, $video, $container)
+
   if (!$video || !$container) {
     return;
   }
  
 
-  $container.style.height = `${$video.clientHeight}px`;
   let fontSize = $video.clientHeight / 23;
   fontSize = fontSize < 16 ? 16 : fontSize;
 

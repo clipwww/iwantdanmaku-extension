@@ -1,4 +1,5 @@
 import Vue, { VNode } from 'vue'
+import '@types/chrome'
 
 declare global {
   namespace JSX {

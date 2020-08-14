@@ -1,19 +1,5 @@
-# iwantdanmaku-ext-with-vue
+# 我想要看彈幕 Chrome 插件
 
-## Project setup
-```
-npm install
-```
+為了可以一邊看木棉花動畫一邊搭配彈幕 ( Nico | 向日葵 | 動畫瘋 )
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+而做的 自爽用的 很陽春的 Chrome 插件

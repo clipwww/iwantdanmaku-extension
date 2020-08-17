@@ -8,11 +8,17 @@
     "default_popup": "popup.html"
   },
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "storage"
   ],
   "content_scripts": [
     {
-      "matches": ["https://www.youtube.com/*", "https://www.agefans.tv/*"],
+      "matches": [
+        "https://*.youtube.com/*", 
+        "https://*.agefans.tv/*", 
+        "https://ani.gamer.com.tw/*",
+        "http://*.gimyvod.com/*"
+      ],
       "run_at": "document_end",
       "js": ["js/content.js"]
     }

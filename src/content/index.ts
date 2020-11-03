@@ -133,6 +133,7 @@ function lightOrDark(color: string) {
 
 window.addEventListener('resize', () => {
   if (danmakuInstance) {
+    danmakuInstance.resize();
     initDanmaku();
   }
 })
@@ -148,6 +149,13 @@ chrome.runtime.onMessage.addListener(
         break;
       case "clear":
         if (danmakuInstance) danmakuInstance.destroy();
+        danmakuList = [];
+        break;
+      case 'hide':
+        danmakuInstance.hide();
+        break;
+      case 'show':
+        danmakuInstance.show();
         break;
     }
   }

@@ -66,7 +66,10 @@
         :disabled="!danmakuList.length"
         @click="load"
       >載入彈幕</button>
-      <button class="bg-red-500 py-2 px-5 rounded text-white" @click="clear">清除</button>
+      <div>
+        <button class="bg-red-500 py-2 px-5 rounded text-white" @click="sendMessage('hide')">隱藏</button>
+        <button class="bg-gray-500 py-2 px-5 ml-2 rounded text-white" @click="sendMessage('show')">顯示</button>
+      </div>
     </div>
   </div>
 </template>
@@ -204,16 +207,13 @@ export default defineComponent({
       });
     }
 
-    function clear() {
-      state.timestamp = +new Date();
-      state.danmakuList = [];
-      state.danmakuUrl = "";
+    function sendMessage(type: string) {
       chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
         if (!tabs[0].id) {
           return;
         }
         chrome.tabs.sendMessage(tabs[0].id, {
-          type: "clear",
+          type,
         });
       });
     }
@@ -224,7 +224,7 @@ export default defineComponent({
       onFileUpload,
       fetchDanmaku,
       load,
-      clear,
+      sendMessage,
     };
   },
 });

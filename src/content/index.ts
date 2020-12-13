@@ -27,7 +27,10 @@ function initDanmaku() {
 
   switch (true) {
     case origin.includes('agefans'):
-      $video = document.querySelector('iframe')?.contentDocument?.querySelector('video') as HTMLVideoElement;
+    case origin.includes('bilibili'):
+      $video = document.querySelector('iframe')?.contentDocument?.querySelector('video') as HTMLVideoElement 
+      ?? document.querySelector('video') as HTMLVideoElement 
+      ?? document.querySelector('iframe');
       $container = $video.parentElement as HTMLElement;
       $video.style.position = 'absolute';
       $video.style.top = '0';
@@ -40,15 +43,6 @@ function initDanmaku() {
       $container.style.height = `${$video.clientHeight}px`;
       break;
     case origin.includes('ani.gamer.com.tw'):
-      $video = document.querySelector('video') as HTMLVideoElement;
-      $container = document.querySelector('.videoframe') as HTMLElement;
-      break;
-    case origin.includes('bilibili'):
-      $video = document.querySelector('video') as HTMLVideoElement;
-      $container = $video.parentElement as HTMLElement;
-      $video.style.position = 'absolute';
-      $container.style.position = 'relative'
-      break;
     default:
       $video = document.querySelector('video') as HTMLVideoElement;
       $container = $video.parentElement as HTMLElement;

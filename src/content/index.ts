@@ -41,7 +41,7 @@ function initDanmaku() {
       break;
     case origin.includes('ani.gamer.com.tw'):
       $video = document.querySelector('video') as HTMLVideoElement;
-      $container = document.querySelector('.videoframe') as HTMLElement;
+      $container = document.querySelector('.video') as HTMLElement;
       break;
     case origin.includes('bilibili'):
       $video = document.querySelector('video') as HTMLVideoElement;

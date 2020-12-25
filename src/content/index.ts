@@ -46,12 +46,6 @@ function initDanmaku() {
       $video = document.querySelector('video') as HTMLVideoElement;
       $container = document.querySelector('.video') as HTMLElement;
       break;
-    case origin.includes('bilibili'):
-      $video = document.querySelector('video') as HTMLVideoElement;
-      $container = $video.parentElement as HTMLElement;
-      $video.style.position = 'absolute';
-      $container.style.position = 'relative'
-      break;
     default:
       $video = document.querySelector('video') as HTMLVideoElement;
       $container = $video.parentElement as HTMLElement;

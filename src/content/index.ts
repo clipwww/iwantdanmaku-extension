@@ -27,7 +27,10 @@ function initDanmaku() {
 
   switch (true) {
     case origin.includes('agefans'):
-      $video = document.querySelector('iframe')?.contentDocument?.querySelector('video') as HTMLVideoElement;
+    case origin.includes('bilibili'):
+      $video = document.querySelector('iframe')?.contentDocument?.querySelector('video') as HTMLVideoElement 
+      ?? document.querySelector('video') as HTMLVideoElement 
+      ?? document.querySelector('iframe');
       $container = $video.parentElement as HTMLElement;
       $video.style.position = 'absolute';
       $video.style.top = '0';

@@ -13,15 +13,7 @@
   ],
   "content_scripts": [
     {
-      "matches": [
-        "https://*.youtube.com/*", 
-        "https://*.agefans.tv/*", 
-        "https://ani.gamer.com.tw/*",
-        "http://*.gimyvod.com/*",
-        "https://gimy.cc/",
-        "https://*.bilibili.com/*"
-
-      ],
+      "matches": ["<all_urls>"],
       "run_at": "document_end",
       "js": ["js/content.js"]
     }

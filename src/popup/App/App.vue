@@ -158,6 +158,8 @@ export default defineComponent({
             let id = matchBahamut?.[1] ?? "";
             url = id ? `${baseUrl}/bahamut/${id}/danmaku` : "";
           }
+          default:
+            return;
         }
 
         if (!url) {

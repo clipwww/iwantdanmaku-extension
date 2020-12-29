@@ -10,7 +10,7 @@ interface DanmakuVM {
 
 let danmakuInstance: Danmaku;
 let danmakuList: DanmakuVM[];
-let danmakuOption: { engine: 'dom' | 'canvas', delay: 0 } = {
+let danmakuOption: { engine: 'dom' | 'canvas', delay: number } = {
   engine: 'dom',
   delay: 0,
 }
@@ -57,8 +57,9 @@ function initDanmaku() {
   }
 
 
-  let fontSize = $video.clientHeight / 23;
+  let fontSize = Math.floor($video.clientHeight / 23);
   fontSize = fontSize < 16 ? 16 : fontSize;
+  fontSize = fontSize > 23 ? 23 : fontSize;
 
   danmakuInstance = new Danmaku({
     // engine: 'canvas',

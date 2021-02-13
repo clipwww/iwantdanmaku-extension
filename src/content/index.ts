@@ -9,7 +9,7 @@ interface DanmakuVM {
 }
 
 let danmakuInstance: Danmaku;
-let danmakuList: DanmakuVM[];
+let danmakuList: DanmakuVM[] = [];
 let danmakuOption: { engine: 'dom' | 'canvas', delay: number } = {
   engine: 'dom',
   delay: 0,
@@ -45,6 +45,7 @@ function initDanmaku() {
     case origin.includes('ani.gamer.com.tw'):
       $video = document.querySelector('video') as HTMLVideoElement;
       $container = document.querySelector('.video') as HTMLElement;
+      $container.style.paddingBottom = `56.25%`;
       break;
     default:
       $video = document.querySelector('video') as HTMLVideoElement;
@@ -59,7 +60,7 @@ function initDanmaku() {
 
   let fontSize = Math.floor($video.clientHeight / 23);
   fontSize = fontSize < 16 ? 16 : fontSize;
-  fontSize = fontSize > 23 ? 23 : fontSize;
+  fontSize = fontSize > 26 ? 26 : fontSize;
 
   danmakuInstance = new Danmaku({
     // engine: 'canvas',
@@ -137,10 +138,10 @@ window.addEventListener('resize', () => {
 })
 
 chrome.runtime.onMessage.addListener(
-  function ({ type, danmakuList: arr, delay, engine }, sender, sendResponse) {
+  function ({ type, danmakuList: arr = [], delay, engine }, sender, sendResponse) {
     switch (type) {
       case "load":
-        danmakuList = arr;
+        danmakuList = danmakuList.concat(arr);
         danmakuOption.engine = engine;
         danmakuOption.delay = delay;
         initDanmaku();

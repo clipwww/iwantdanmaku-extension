@@ -62,8 +62,6 @@
     <div class="flex items-center justify-between mt-4">
       <button
         class="bg-blue-500 py-2 px-5 rounded text-white"
-        :class="!danmakuList.length ? 'opacity-50 cursor-not-allowed' : ''"
-        :disabled="!danmakuList.length"
         @click="load"
       >載入彈幕</button>
       <div>
@@ -184,9 +182,6 @@ export default defineComponent({
     }
 
     function load() {
-      if (!state.danmakuList.length) {
-        return;
-      }
 
       chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
         if (!tabs[0].id) {

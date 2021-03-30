@@ -65,7 +65,8 @@
         @click="load"
       >載入彈幕</button>
       <div>
-        <button class="bg-red-500 py-2 px-5 rounded text-white" @click="sendMessage('hide')">隱藏</button>
+        <button class="bg-red-300 py-2 px-5 rounded text-white" @click="sendMessage('hide')">隱藏</button>
+        <button class="bg-red-500 py-2 px-5 ml-2 rounded text-white" @click="sendMessage('clear')">清除</button>
         <button class="bg-gray-500 py-2 px-5 ml-2 rounded text-white" @click="sendMessage('show')">顯示</button>
       </div>
     </div>
@@ -156,8 +157,10 @@ export default defineComponent({
             let id = matchBahamut?.[1] ?? "";
             url = id ? `${baseUrl}/bahamut/${id}/danmaku` : "";
           }
+          case !isNaN(+url):
+            url = `${baseUrl}/bilibili/${url}/danmaku`;
           default:
-            return;
+            break;
         }
 
         if (!url) {

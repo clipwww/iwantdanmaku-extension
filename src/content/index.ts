@@ -26,7 +26,7 @@ function initDanmaku() {
   const origin = window.location.origin;
 
   switch (true) {
-    case origin.includes('agefans'):
+    case origin.includes('age'):
     case origin.includes('bilibili'):
       $video = document.querySelector('iframe')?.contentDocument?.querySelector('video') as HTMLVideoElement 
       ?? document.querySelector('video') as HTMLVideoElement 

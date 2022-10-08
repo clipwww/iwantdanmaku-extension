@@ -1,9 +1,9 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "我想要彈幕",
   "description": "左舷，彈幕太薄了！",
-  "version": "0.1.0",
-  "browser_action": {
+  "version": "0.1.1",
+  "action": {
     "default_icon": "icon.png",
     "default_popup": "popup.html"
   },
@@ -18,5 +18,14 @@
       "js": ["js/content.js"]
     }
   ],
-  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+  "content_security_policy":{
+    "extension_pages": "script-src 'self'; object-src 'self'",
+    "sandbox": "sandbox allow-scripts; script-src 'self' 'https://apis.google.com/' 'https://www.gstatic.com/' 'https://*.firebaseio.com' 'https://www.googleapis.com' 'https://ajax.googleapis.com'; object-src 'self'"
+  },
+  "icons": {
+    "16": "icon.png",
+    "32": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  }
 }

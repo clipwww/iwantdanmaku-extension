@@ -106,7 +106,7 @@ export default defineComponent({
       }
     );
 
-    async function onFileUpload(e: InputEvent) {
+    async function onFileUpload(e: Event) {
       try {
         state.isLoading = true;
         const target = e.target as HTMLInputElement;
@@ -122,7 +122,7 @@ export default defineComponent({
 
     async function fetchDanmaku() {
       try {
-        const baseUrl = "http://mechakucha-api.herokuapp.com";
+        const baseUrl = "https://mechakucha-api.fly.dev";
         let url = state.danmakuUrl;
 
         const matchNico = url.match(
